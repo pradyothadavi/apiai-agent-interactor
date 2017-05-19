@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.*;
                 @JsonSubTypes.Type(value = TextResponse.class),
                 @JsonSubTypes.Type(value = ImageResponse.class),
                 @JsonSubTypes.Type(value = CardMessage.class),
-                @JsonSubTypes.Type(value = CustomPayload.class),
+                @JsonSubTypes.Type(value = CustomPayload.class)
 })
 public abstract class ResponseMessage {
 
