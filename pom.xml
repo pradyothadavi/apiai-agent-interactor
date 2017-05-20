@@ -4,7 +4,7 @@
 
   <groupId>com.github.pradyothadavi</groupId>
   <artifactId>apiai-agent-interactor</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.3-SNAPSHOT</version>
   <modules>
     <module>apiai-agent-model</module>
     <module>apiai-agent-bundle</module>
