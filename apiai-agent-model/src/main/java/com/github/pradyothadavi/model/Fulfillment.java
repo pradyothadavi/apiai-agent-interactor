@@ -1,6 +1,5 @@
 package com.github.pradyothadavi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,9 +14,6 @@ public class Fulfillment {
   @JsonProperty("speech")
   private String speech;
   
-  @JsonProperty("messages")
-  private String responseMessages;
-  
   public String getSpeech() {
     return speech;
   }
@@ -26,17 +22,8 @@ public class Fulfillment {
     this.speech = speech;
   }
   
-  @JsonIgnore
-  public String getResponseMessages() {
-    return responseMessages;
-  }
-  
-  public void setResponseMessages(String responseMessages) {
-    this.responseMessages = responseMessages;
-  }
-  
   @Override
   public String toString() {
-    return "Fulfillment{" + "speech='" + speech + '\'' + ", responseMessages=" + responseMessages + '}';
+    return "Fulfillment{" + "speech='" + speech + '\'' + '}';
   }
 }
