@@ -1,8 +1,9 @@
 package com.github.pradyothadavi.model;
 
-import com.fasterxml.jackson.annotation.*;
-
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by pradyot.ha on 12/05/17.
@@ -15,7 +16,7 @@ public class Fulfillment {
   private String speech;
   
   @JsonProperty("messages")
-  private List<ResponseMessage> responseMessages;
+  private String responseMessages;
   
   public String getSpeech() {
     return speech;
@@ -26,11 +27,11 @@ public class Fulfillment {
   }
   
   @JsonIgnore
-  public List<ResponseMessage> getResponseMessages() {
+  public String getResponseMessages() {
     return responseMessages;
   }
   
-  public void setResponseMessages(List<ResponseMessage> responseMessages) {
+  public void setResponseMessages(String responseMessages) {
     this.responseMessages = responseMessages;
   }
   
