@@ -7,6 +7,7 @@ package com.github.pradyothadavi.response;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.pradyothadavi.model.OriginalRequest;
 import com.github.pradyothadavi.model.Result;
 import com.github.pradyothadavi.model.Status;
 
@@ -45,6 +46,9 @@ public class QueryResponse {
   
   @JsonProperty("status")
   private Status status;
+  
+  @JsonProperty("originalRequest")
+  private OriginalRequest originalRequest;
   
   public String getId() {
     return id;
@@ -94,8 +98,16 @@ public class QueryResponse {
     this.status = status;
   }
   
+  public OriginalRequest getOriginalRequest() {
+    return originalRequest;
+  }
+  
+  public void setOriginalRequest(OriginalRequest originalRequest) {
+    this.originalRequest = originalRequest;
+  }
+  
   @Override
   public String toString() {
-    return "QueryResponse{" + "id='" + id + '\'' + ", timestamp=" + timestamp + ", languageTag='" + languageTag + '\'' + ", result=" + result + ", sessionId='" + sessionId + '\'' + ", status=" + status + '}';
+    return "QueryResponse{" + "id='" + id + '\'' + ", timestamp=" + timestamp + ", languageTag='" + languageTag + '\'' + ", result=" + result + ", sessionId='" + sessionId + '\'' + ", status=" + status + ", originalRequest=" + originalRequest + '}';
   }
 }
