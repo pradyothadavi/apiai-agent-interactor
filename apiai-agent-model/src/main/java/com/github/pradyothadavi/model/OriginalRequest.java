@@ -14,9 +14,8 @@ public class OriginalRequest {
   @JsonProperty("source")
   private String source;
   
-  // TODO : Model this as object
   @JsonProperty("data")
-  private String data;
+  private Object data;
   
   public String getSource() {
     return source;
@@ -26,11 +25,11 @@ public class OriginalRequest {
     this.source = source;
   }
   
-  public String getData() {
+  public Object getData() {
     return data;
   }
   
-  public void setData(String data) {
+  public void setData(Object data) {
     this.data = data;
   }
   
