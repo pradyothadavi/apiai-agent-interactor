@@ -2,8 +2,8 @@ package com.github.pradyothadavi.core.v1;
 
 import com.github.pradyothadavi.core.AiAgentConfiguration;
 import com.github.pradyothadavi.core.AiConversationService;
-import com.github.pradyothadavi.request.QueryRequest;
-import com.github.pradyothadavi.response.QueryResponse;
+import com.github.pradyothadavi.api.ai.request.QueryRequest;
+import com.github.pradyothadavi.api.ai.response.QueryResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
