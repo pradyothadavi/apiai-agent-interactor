@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,8 +51,51 @@ public class ExpectedInput {
     this.speechBiasingHints = speechBiasingHints;
   }
   
+  public static ExpectedInputBuilder builder(){
+    return new ExpectedInputBuilder();
+  }
   @Override
   public String toString() {
     return "ExpectedInput{" + "inputPrompt=" + inputPrompt + ", possibleIntents=" + possibleIntents + ", speechBiasingHints='" + speechBiasingHints + '\'' + '}';
+  }
+  
+  public static class ExpectedInputBuilder{
+  
+    private InputPrompt inputPrompt;
+    private List<ExpectedIntent> possibleIntents;
+    private String speechBiasingHints;
+  
+    public ExpectedInputBuilder inputPrompt(InputPrompt inputPrompt) {
+      this.inputPrompt = inputPrompt;
+      return this;
+    }
+  
+    public ExpectedInputBuilder possibleIntent(ExpectedIntent possibleIntent) {
+      if(null == this.possibleIntents)
+        this.possibleIntents = new ArrayList<ExpectedIntent>();
+      this.possibleIntents.add(possibleIntent);
+      return this;
+    }
+    
+    public ExpectedInputBuilder possibleIntents(List<ExpectedIntent> possibleIntents) {
+      if(null == this.possibleIntents)
+        this.possibleIntents = new ArrayList<ExpectedIntent>();
+      this.possibleIntents.addAll(possibleIntents);
+      return this;
+    }
+  
+    public ExpectedInputBuilder setSpeechBiasingHints(String speechBiasingHints) {
+      this.speechBiasingHints = speechBiasingHints;
+      return this;
+    }
+    
+    public ExpectedInput build(){
+      ExpectedInput expectedInput = new ExpectedInput();
+      expectedInput.setInputPrompt(inputPrompt);
+      expectedInput.setPossibleIntents(possibleIntents);
+      expectedInput.setSpeechBiasingHints(speechBiasingHints);
+      return expectedInput;
+    }
+    
   }
 }

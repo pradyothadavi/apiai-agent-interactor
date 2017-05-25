@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,8 +51,60 @@ public class RichResponse {
     this.linkOutSuggestion = linkOutSuggestion;
   }
   
+  public static RichResponseBuilder builder(){
+    return new RichResponseBuilder();
+  }
+  
   @Override
   public String toString() {
     return "RichResponse{" + "items=" + items + ", suggestions=" + suggestions + ", linkOutSuggestion=" + linkOutSuggestion + '}';
+  }
+  
+  public static class RichResponseBuilder{
+    
+    private List<Item> items;
+    private List<Suggestion> suggestions;
+    private LinkOutSuggestion linkOutSuggestion;
+  
+    public RichResponseBuilder item(Item item) {
+      if(null == this.items)
+        this.items = new ArrayList<Item>();
+      this.items.add(item);
+      return this;
+    }
+    
+    public RichResponseBuilder items(List<Item> items) {
+      if(null == this.items)
+        this.items = new ArrayList<Item>();
+      this.items.addAll(items);
+      return this;
+    }
+  
+    public RichResponseBuilder suggestion(Suggestion suggestion) {
+      if(null == this.suggestions)
+        this.suggestions = new ArrayList<Suggestion>();
+      this.suggestions.add(suggestion);
+      return this;
+    }
+    
+    public RichResponseBuilder suggestions(List<Suggestion> suggestions) {
+      if(null == this.suggestions)
+        this.suggestions = new ArrayList<Suggestion>();
+      this.suggestions.addAll(suggestions);
+      return this;
+    }
+    
+    public RichResponseBuilder linkOutSuggestion(LinkOutSuggestion linkOutSuggestion) {
+      this.linkOutSuggestion = linkOutSuggestion;
+      return this;
+    }
+    
+    public RichResponse build(){
+      RichResponse richResponse = new RichResponse();
+      richResponse.setItems(items);
+      richResponse.setSuggestions(suggestions);
+      richResponse.setLinkOutSuggestion(linkOutSuggestion);
+      return richResponse;
+    }
   }
 }

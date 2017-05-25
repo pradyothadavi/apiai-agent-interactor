@@ -48,8 +48,42 @@ public class Item {
     this.structuredResponse = structuredResponse;
   }
   
+  public static ItemBuilder builder(){
+    return new ItemBuilder();
+  }
+  
   @Override
   public String toString() {
     return "Item{" + "simpleResponse=" + simpleResponse + ", basicCard=" + basicCard + ", structuredResponse=" + structuredResponse + '}';
+  }
+  
+  public static class ItemBuilder{
+    
+    private SimpleResponse simpleResponse;
+    private BasicCard basicCard;
+    private StructuredResponse structuredResponse;
+  
+    public ItemBuilder simpleResponse(SimpleResponse simpleResponse) {
+      this.simpleResponse = simpleResponse;
+      return this;
+    }
+  
+    public ItemBuilder basicCard(BasicCard basicCard) {
+      this.basicCard = basicCard;
+      return this;
+    }
+  
+    public ItemBuilder structuredResponse(StructuredResponse structuredResponse) {
+      this.structuredResponse = structuredResponse;
+      return this;
+    }
+    
+    public Item build(){
+      Item item = new Item();
+      item.setSimpleResponse(simpleResponse);
+      item.setBasicCard(basicCard);
+      item.setStructuredResponse(structuredResponse);
+      return item;
+    }
   }
 }

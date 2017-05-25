@@ -3,11 +3,9 @@ package com.github.pradyothadavi.google.action.response;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.pradyothadavi.google.action.model.CustomPushMessage;
-import com.github.pradyothadavi.google.action.model.ExpectedInput;
-import com.github.pradyothadavi.google.action.model.FinalResponse;
-import com.github.pradyothadavi.google.action.model.ResponseMetaData;
+import com.github.pradyothadavi.google.action.model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,6 +36,10 @@ public class AppResponse {
   
   @JsonProperty("responseMetadata")
   private ResponseMetaData responseMetadata;
+  
+  public static AppResponseBuilder builder(){
+    return new AppResponseBuilder();
+  }
   
   public String getConversationToken() {
     return conversationToken;
@@ -90,5 +92,65 @@ public class AppResponse {
   @Override
   public String toString() {
     return "AppResponse{" + "conversationToken='" + conversationToken + '\'' + ", expectUserResponse=" + expectUserResponse + ", expectedInputs=" + expectedInputs + ", finalResponse=" + finalResponse + ", customPushMessage=" + customPushMessage + ", responseMetadata=" + responseMetadata + '}';
+  }
+  
+  public static class AppResponseBuilder {
+    
+    private String conversationToken;
+    private boolean expectUserResponse;
+    private List<ExpectedInput> expectedInputs;
+    private FinalResponse finalResponse;
+    private CustomPushMessage customPushMessage;
+    private ResponseMetaData responseMetadata;
+  
+    public AppResponseBuilder conversationId(String conversationId){
+      this.conversationToken = conversationId;
+      return this;
+    }
+  
+    public AppResponseBuilder expectUserResponse(boolean expectUserResponse){
+      this.expectUserResponse = expectUserResponse;
+      return this;
+    }
+    
+    public AppResponseBuilder expectedInput(ExpectedInput expectedInput){
+      if(null == this.expectedInputs)
+        this.expectedInputs = new ArrayList<ExpectedInput>();
+      this.expectedInputs.add(expectedInput);
+      return this;
+    }
+  
+    public AppResponseBuilder expectedInputs(List<ExpectedInput> expectedInputs){
+      if(null == this.expectedInputs)
+        this.expectedInputs = new ArrayList<ExpectedInput>();
+      this.expectedInputs.addAll(expectedInputs);
+      return this;
+    }
+  
+    public AppResponseBuilder finalResponse(FinalResponse finalResponse){
+      this.finalResponse = finalResponse;
+      return this;
+    }
+  
+    public AppResponseBuilder customPushMessage(CustomPushMessage customPushMessage){
+      this.customPushMessage = customPushMessage;
+      return this;
+    }
+  
+    public AppResponseBuilder responseMetadata(ResponseMetaData responseMetadata){
+      this.responseMetadata = responseMetadata;
+      return this;
+    }
+    
+    public AppResponse build(){
+      AppResponse appResponse = new AppResponse();
+      appResponse.setConversationToken(this.conversationToken);
+      appResponse.setExpectUserResponse(this.expectUserResponse);
+      appResponse.setExpectedInputs(this.expectedInputs);
+      appResponse.setFinalResponse(this.finalResponse);
+      appResponse.setCustomPushMessage(this.customPushMessage);
+      appResponse.setResponseMetadata(this.responseMetadata);
+      return appResponse;
+    }
   }
 }

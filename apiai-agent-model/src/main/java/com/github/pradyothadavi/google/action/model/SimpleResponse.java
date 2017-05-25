@@ -24,6 +24,10 @@ public class SimpleResponse {
   @JsonProperty("displayText")
   private String displayText;
   
+  public static SimpleResponseBuilder builder(){
+    return new SimpleResponseBuilder();
+  }
+  
   public String getTextToSpeech() {
     return textToSpeech;
   }
@@ -51,5 +55,35 @@ public class SimpleResponse {
   @Override
   public String toString() {
     return "SimpleResponse{" + "textToSpeech='" + textToSpeech + '\'' + ", ssml='" + ssml + '\'' + ", displayText='" + displayText + '\'' + '}';
+  }
+  
+  public static class SimpleResponseBuilder{
+    
+    private String textToSpeech;
+    private String ssml;
+    private String displayText;
+  
+    public SimpleResponseBuilder textToSpeech(String textToSpeech) {
+      this.textToSpeech = textToSpeech;
+      return this;
+    }
+  
+    public SimpleResponseBuilder ssml(String ssml) {
+      this.ssml = ssml;
+      return this;
+    }
+  
+    public SimpleResponseBuilder displayText(String displayText) {
+      this.displayText = displayText;
+      return this;
+    }
+    
+    public SimpleResponse build(){
+      SimpleResponse simpleResponse = new SimpleResponse();
+      simpleResponse.setTextToSpeech(textToSpeech);
+      simpleResponse.setSsml(ssml);
+      simpleResponse.setDisplayText(displayText);
+      return simpleResponse;
+    }
   }
 }
