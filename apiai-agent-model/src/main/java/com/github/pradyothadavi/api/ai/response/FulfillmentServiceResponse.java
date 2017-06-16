@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.pradyothadavi.api.ai.model.Context;
+import com.github.pradyothadavi.api.ai.model.ResponseMessage;
 
 import java.util.List;
 
@@ -32,6 +33,9 @@ public class FulfillmentServiceResponse {
   
   @JsonProperty("followupEvent")
   private Object followupEvent;
+  
+  @JsonProperty("messages")
+  private List<ResponseMessage> responseMessages;
   
   public String getSpeech() {
     return speech;
@@ -82,8 +86,16 @@ public class FulfillmentServiceResponse {
     this.followupEvent = followupEvent;
   }
   
+  public List<ResponseMessage> getResponseMessages() {
+    return responseMessages;
+  }
+  
+  public void setResponseMessages(List<ResponseMessage> responseMessages) {
+    this.responseMessages = responseMessages;
+  }
+  
   @Override
   public String toString() {
-    return "FulfillmentServiceResponse{" + "speech='" + speech + '\'' + ", displayText='" + displayText + '\'' + ", data=" + data + ", contexts=" + contexts + ", source='" + source + '\'' + ", followupEvent=" + followupEvent + '}';
+    return "FulfillmentServiceResponse{" + "speech='" + speech + '\'' + ", displayText='" + displayText + '\'' + ", data=" + data + ", contexts=" + contexts + ", source='" + source + '\'' + ", followupEvent=" + followupEvent + ", responseMessages=" + responseMessages + '}';
   }
 }
