@@ -1,6 +1,8 @@
 # apiai-agent-interactor
 A dropwizard bundle to interact with the Api.ai NLU platform
 
+[![Build Status](https://travis-ci.org/pradyothadavi/apiai-agent-interactor.svg?branch=master)](https://travis-ci.org/pradyothadavi/apiai-agent-interactor)
+
 #### Maven Dependency
 
 ```maven
